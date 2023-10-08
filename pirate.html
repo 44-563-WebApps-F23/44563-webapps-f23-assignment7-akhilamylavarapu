@@ -158,32 +158,21 @@
             var colCondition = treasureCol == lastCheckCol;
             var rowCondition = treasureRow == lastCheckRow;
 
-            var colDiff = lastCheckCol - treasureCol;
-            var rowDiff = lastCheckRow - treasureRow;
+            var colDiff = Math.abs(lastCheckCol - treasureCol);
+            var rowDiff = Math.abs(lastCheckRow - treasureRow);
 
-            if(colCondition) {
-                if(rowDiff == 1 || rowDiff == -1) {
+            if(colCondition || rowCondition) {
+                if(rowDiff == 1 || colDiff == 1) {
                     helpText = "Can Smell It";
                 }
-                else if(rowDiff == 2 || rowDiff == -2){
+                else if(rowDiff == 2 || colDiff == 2){
                     helpText = "Close Matie";
                 }
                 else {
                     helpText = "Step Faster"
                 }
             }
-            else if(rowCondition){
-                if(colDiff == 1 || colDiff == -1){
-                    helpText = "Can Smell It";
-                }
-                else if(colDiff == 2 || colDiff == -2){
-                    helpText = "Close Matie";
-                }
-                else {
-                    helpText = "Step Faster"
-                }
-            }
-            else if((rowDiff == 1 || rowDiff == -1) && (colDiff == 1 || colDiff == -1)){ 
+            else if(rowDiff == 1 && colDiff == 1){ 
                 helpText = "Close Matie";
             }
             else{
@@ -193,7 +182,6 @@
             document.getElementById("penalty").innerHTML = "Penalty is : " + penalty;
             document.getElementById("help").innerHTML = helpText;
         }
-
 
     </script>
   </body>
