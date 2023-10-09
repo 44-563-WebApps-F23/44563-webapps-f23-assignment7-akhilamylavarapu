@@ -11,15 +11,17 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body style="background-color: #6137a4">
 
-    <h2>Akhila Mylavarapu speed check</h2>
+    <h2 class="text-center">Akhila Mylavarapu speed check</h2>
 
-    <div id="target">Your time</div>
-    <div id="counter">Count</div>
+    <div class="d-flex justify-content-center" id="target"><b><i>Your time :</i></b></div>
+    <div class="d-flex justify-content-center" id="counter"><b><i>Count</i></b></div>
 
-    <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
-    <button type="button" class="btn btn-primary" onclick="recordTime()">React</button>
+    <div class= "d-flex justify-content-center">
+        <button type="button" class="btn btn-primary mx-2" onclick="startTime()">Start Timer</button> 
+        <button type="button" class="btn btn-primary " onclick="recordTime()">React</button>
+    </div>
 
     <script>
         var reactTime = undefined;
