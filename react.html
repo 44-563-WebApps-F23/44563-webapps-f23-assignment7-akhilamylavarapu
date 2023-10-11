@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<body style="background-color: #4306a7">
+<body style="background-color: #8860c8">
 
     <h2 class="text-center">Akhila Mylavarapu speed check</h2>
 
@@ -23,6 +23,8 @@
         <button type="button" class="btn btn-primary " onclick="recordTime()">React</button>
     </div>
 
+
+
     <script>
         var reactTime = undefined;
 
@@ -33,10 +35,11 @@
         }
 
         function startTime() {
-            for(let i = 0; i <= 8; i++){
+            var countdown = Math.floor(Math.random() * (10 - 2 + 1)) + 2;
+            for(let i = 0; i <= countdown; i++){
                 setTimeout(() => {
                     document.getElementById("counter").innerHTML = i;
-                },((8-i)*1000));
+                },((countdown-i)*1000));
             }
             setTimeout(() => {
                 if(!reactTime){

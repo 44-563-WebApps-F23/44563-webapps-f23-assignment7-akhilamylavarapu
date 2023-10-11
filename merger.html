@@ -43,6 +43,7 @@
     <button onclick="makeNewDiv()" class="btn btn-primary">Add end</button>
     <button type="button" onclick="addFront()" class="btn btn-primary">Add Front</button>
     <button type="button" onclick="remove()" class="btn btn-primary">Remove</button>
+    <button type="button" onclick="swap()" class="btn btn-primary">Swap</button>
 
 </body>
 <script>
@@ -70,12 +71,66 @@
     function addFront(){
         let element = document.createElement("div");
         element.innerHTML = document.getElementById("inputText").value;
-        element.style.color = "orange";
+        element.style.color = "black";
         element.className = "merger";
 
         /* add it to the container */
         let container = document.getElementById('target');
         container.insertBefore(element, container.firstChild);
+    }
+
+    function swap(){
+        var mergerItems =  document.getElementsByClassName("merger");
+        var length = mergerItems.length;
+        if(length <= 1){
+            alert("Items should be more than one to make a swap");
+            return;
+        }
+        
+        let container = document.getElementById('target');
+        var firstIndex = Math.floor(Math.random() * length);
+        var secondIndex = Math.floor(Math.random() * length);
+
+        while(firstIndex == secondIndex){
+            secondIndex = Math.floor(Math.random() * length);
+        }
+        if (secondIndex < firstIndex){
+            let temp = secondIndex;
+            secondIndex = firstIndex;
+            firstIndex = temp;
+        }
+
+        var firstElement = mergerItems[firstIndex];
+        var secondElement = mergerItems[secondIndex];
+
+        if(secondIndex - firstIndex == 1){
+            var nextElementSibling = secondElement.nextElementSibling;
+            firstElement.remove();
+            secondElement.remove();
+
+            if(nextElementSibling) {
+                container.insertBefore(firstElement,nextElementSibling);
+                container.insertBefore(secondElement,firstElement);
+            }
+            else{
+                container.appendChild(secondElement);
+                container.appendChild(firstElement);
+            }
+        }
+        else{
+            var firstElementSibling = firstElement.nextElementSibling;
+            var secondElementSibiling  = secondElement.nextElementSibling;
+            firstElement.remove();
+            secondElement.remove();
+
+            container.insertBefore(secondElement,firstElementSibling);
+            if(secondElementSibiling) {
+                container.insertBefore(firstElement,secondElementSibiling);
+            }
+            else{
+                container.appendChild(firstElement);
+            }
+        }
     }
 </script>
 
